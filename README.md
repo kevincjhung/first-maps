@@ -68,14 +68,14 @@ The application implements third party authentication. It allows users to log in
 ## Tech Stack
 
 **Frontend**
-Map: React Leaflet, Open Map Tiles
-Framework: React
-Styling: Storybook, Styled Components
+- Map: React Leaflet, Open Map Tiles
+- Framework: React
+- Styling: Storybook, Styled Components
 
 **Backend**
-Auth: Third Party Authentication with NextAuth.js
-Server: Next.js
-Database: MongoDB with Mongoose as the ORM
+- Auth: Third Party Authentication with NextAuth.js
+- Server: Next.js
+- Database: MongoDB with Mongoose as the ORM
 <br/>
 
 ## Data
