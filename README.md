@@ -50,6 +50,7 @@ The location page displays information in more detail about a given location. Th
 The contribution page allows users to add a new location to the map. The user can enter the name of the location, a description, the category of the location, and the location on a map.
 
 Authentication is required for a user to create a new location. If the user is not logged in, they will be redirected to the login page.
+
 ![Contribution Page](./public/ReadmePhotos/ContributionPage.png)
 <br/>
 
@@ -72,7 +73,7 @@ Framework: React
 Styling: Storybook, Styled Components
 
 **Backend**
-Auth: NextAuth.js
+Auth: Third Party Authentication with NextAuth.js
 Server: Next.js
 Database: MongoDB with Mongoose as the ORM
 <br/>
