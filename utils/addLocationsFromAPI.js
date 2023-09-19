@@ -1,6 +1,6 @@
 import axios from 'axios'
 import dbConnect from './dbConnect.js'
-import dev_LocationOfInterest from '../models/dev_LocationOfInterest.js'
+import LocationOfInterest from '../models/LocationOfInterest.js'
 import nativeIpsum from './nativeIpsum.js'
 
 
@@ -138,12 +138,18 @@ export default async function seed(){
         description = description.substring(0, 500)
       }
 
+    //   userEmail: {
+    //     type: String,
+    //     required: [true, 'please provide user email'],
+    // },
+
       // insert into database
-      await dev_LocationOfInterest.create({ 
+      await LocationOfInterest.create({ 
         name: sanitizedName, 
         coordinates, 
         category, 
-        description 
+        description,
+        userEmail: 'LocationAddedByAPI@gmail.com' 
       })
 	  }
 

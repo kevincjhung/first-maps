@@ -1,5 +1,5 @@
 import dbConnect from "../../../../../utils/dbConnect"
-import dev_LocationOfInterest from '../../../../../models/dev_LocationOfInterest'
+import LocationOfInterest from '../../../../../models/LocationOfInterest'
 
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3"
@@ -19,7 +19,7 @@ const s3 = new S3Client({
   }
 })
 
-export default async function devLocationsOfInterestName (req, res) {
+export default async function LocationsOfInterestName (req, res) {
   const {
     query: { category, locationName },
     method
@@ -30,7 +30,7 @@ export default async function devLocationsOfInterestName (req, res) {
       try {
         let name = locationName.split('%20').join(' ')
 
-        const location = JSON.parse(JSON.stringify(await dev_LocationOfInterest.findOne({
+        const location = JSON.parse(JSON.stringify(await LocationOfInterest.findOne({
           name,
           category
         })))

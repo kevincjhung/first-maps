@@ -154,17 +154,17 @@ export default function Map({
         let locationsOfInterestArray
 
         // CHOOSE A DATABASE TO FETCH FROM: "staging" or "dev"
-        let databaseToFetchFrom = "dev"
-
+        let databaseToFetchFrom = "staging"
+        
         // call API based on chosen database 
         if (databaseToFetchFrom === "staging") {
-          request = await axios.get("/api/locationsOfInterest")
+          request = await axios.get("/api/LocationsOfInterest")
           locationsOfInterestArray = request.data.results
         } else if (databaseToFetchFrom === "dev") {
-          request = await axios.get("/api/devLocationsOfInterest")
-          locationsOfInterestArray = request.data.results
+          // TO BE IMPLEMENTED
+          console.error('`databaseToFetchFrom` is not a valid database')
         } else {
-          console.error('`databaseToFetchFrom` is not a valid database. See Map.jsx')
+          console.error('`databaseToFetchFrom` is not a valid database')
         }
 
         // reverses cordinates to match leaflet's format
