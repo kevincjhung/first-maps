@@ -5,6 +5,7 @@
 ![Map Card](./public/ReadmePhotos/IntroPage.png)
 
 <br/>
+
 **What is First Maps?**
 
 First Maps is an interactive map application for indigenous community members and the general public to establish and strengthen connections in the spheres of culture, art and tourism.
@@ -68,11 +69,13 @@ The application implements third party authentication. It allows users to log in
 ## Tech Stack
 
 **Frontend**
+
 - Map: React Leaflet, Open Map Tiles
 - Framework: React
 - Styling: Storybook, Styled Components
 
 **Backend**
+
 - Auth: Third Party Authentication with NextAuth.js
 - Server: Next.js
 - Database: MongoDB with Mongoose as the ORM
@@ -84,6 +87,3 @@ The application is seeded with data from the Native-Lands API: <https://native-l
 The API includes locations around the world, however, for demonstration, we only used locations that are within and near the province of British Columbia, Canada.
 <br/>
 
-## Known Issues
-
-- Originally the plan was to allow the application to connect to two cloud MongoDB Atlas databases, one for development and one for production. Switching between the two databases should be done using environment variables rathern than a different set of URL paths. This will be fixed in the near future.
