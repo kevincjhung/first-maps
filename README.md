@@ -79,6 +79,7 @@ The application implements third party authentication. It allows users to log in
 - Auth: Third Party Authentication with NextAuth.js
 - Server: Next.js
 - Database: MongoDB with Mongoose as the ORM
+- Object Storage: AWS S3
 <br/>
 
 ## Data
