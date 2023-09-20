@@ -125,7 +125,7 @@ export default function Explore({ ...props }) {
     // fetch data for the category, after the query string is defined, then set the state
     ; (async () => {
       try {
-        let response = await axios.get(`/api/devLocationsOfInterest/${queryStr}`, { signal: abortController.signal })
+        let response = await axios.get(`/api/LocationsOfInterest/${queryStr}`, { signal: abortController.signal })
         let data = response.data.Results
         // sort the data alphabetically
         data.sort((a, b) => a.name.localeCompare(b.name))

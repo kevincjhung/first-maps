@@ -102,7 +102,7 @@ export default function Explore({ ...props }) {
         let cultArray = []
         
         // fetch data from all categories
-        let response = await axios.get("/api/devLocationsOfInterest")
+        let response = await axios.get("/api/LocationsOfInterest")
         let results = response.data.results
 
         // loop through results and push to appropriate array        
@@ -167,7 +167,7 @@ export default function Explore({ ...props }) {
     const innerText = e.target.innerText // print out the inner text of the html element
     
     // get locationOfInterest data from location name
-    let response = await axios.get(`/api/devLocationsOfInterest/getLocationFromName/${innerText}`)
+    let response = await axios.get(`/api/LocationsOfInterest/getLocationFromName/${innerText}`)
     let category = response.data.results.category
     
     router.push(`/explore/${category}/${innerText}`)

@@ -1,7 +1,7 @@
 // API routes, you give the name of the location, it returns the category
 
 import dbConnect from "../../../../utils/dbConnect"
-import dev_LocationOfInterest from '../../../../models/dev_LocationOfInterest'
+import LocationOfInterest from '../../../../models/LocationOfInterest'
 
 dbConnect()
 
@@ -19,7 +19,7 @@ export default async function getLocationFromName(req, res) {
 				let locationNameStr = locationName.toString() // get the category from the url
 
 				// query the database, return the location with the given name
-				const location = await dev_LocationOfInterest.findOne({
+				const location = await LocationOfInterest.findOne({
 					name: locationNameStr
 				})
 

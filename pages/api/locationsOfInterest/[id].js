@@ -1,12 +1,13 @@
+// this file takes care of dynamic routes
+
 import dbConnect from "../../../utils/dbConnect"
 import LocationOfInterest from '../../../models/LocationOfInterest'
 
 dbConnect()
 
 
-// eslint-disable-next-line import/no-anonymous-default-export
 
-export default async function locationsOfInterestId (req, res) {
+export default async function LocationsOfInterestId (req, res) {
   const {
     query: { id },
     method
@@ -14,54 +15,59 @@ export default async function locationsOfInterestId (req, res) {
 
   switch (method) {
     case 'GET':
+      // takes category from params, queries db for all locations in that category
+
       try {
-        const location = await LocationOfInterest.findById(id)
-
-        if (!location) {
-          return res.status(400).json({ success: false })
-        }
-        res.status(200).json({success: true, results: location})
-
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
-    
-    case 'PUT':
-      try{
-        const location = await LocationOfInterest.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true
+        let category = id.toString() // get the category from the url
+        
+        // query the database, return all with the given category
+        const locationsByCategory = await LocationOfInterest.find({
+          category  
         })
 
-        if (!location) {
-          return res.status(400).json({ success: false })
-        }
-        res.status(200).json({success: true, results: location})
+        res.status(200).json({success: true, Results: locationsByCategory}) // return the results
 
-      } catch(error){
-        res.status(400).json({ success: false })
+      } catch (error) {
+        res.status(400).json({ success: false, message: error.toString() })
       }
       break
+
+
+    // ***UPDATE CODE BELOW BEFORE USING, THIS IS COPIED FROM SOMEWHERE ELSE **
+    // case 'PUT':
+    //   try{
+    //     const location = await LocationsOfInterest.findByIdAndUpdate(id, req.body, {
+    //       new: true,
+    //       runValidators: true
+    //     })
+
+
+    //     if (!location) {
+    //       return res.status(400).json({ success: false })
+    //     }
+    //     res.status(200).json({success: true, Results: location})
+
+    //   } catch(error){
+    //     res.status(400).json({ success: false })
+    //   }
+    //   break
     
-    case 'DELETE':
-      try {
-        // delete one location
-        const deletedLocation = await LocationOfInterest.deleteOne({ _id: id })
+    // case 'DELETE':
+    //   try {
+    // delete one location
+    //     const deletedLocation = await LocationOfInterest.deleteOne({ _id: id })
 
-        if (!deletedLocation) {
-          return res.status(400).json({ success: false })
-        }
-        res.status(200).json({success: true, results: {}})
-
-      } catch(error){
-        res.status(400).json({success: false})
-      }
-      break
+    //     if (!deletedLocation) {
+    //       return res.status(400).json({ success: false })
+    //     }
+    //     res.status(200).json({success: true, Results: {}})
+    //   } catch(error){
+    //     res.status(400).json({success: false})
+    //   }
+    //   break
     
     default:
-      res.status(400).json({ success: false })
+      res.status(400).json({ success: false, message: "method not allowed" })
       break
   }
 }
-

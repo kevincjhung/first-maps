@@ -43,7 +43,7 @@ export default function MyContributions({
 
   // aysnc functuion to fetch the data from the database
   const fetchPages = async () => {
-    const res = await fetch('/api/devLocationsOfInterest')
+    const res = await fetch('/api/LocationsOfInterest')
     const data = await res.json()
     const usersPages = data.results.filter(page => page.userEmail === props.user.email)
     setPages(usersPages)

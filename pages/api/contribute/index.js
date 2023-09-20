@@ -10,7 +10,7 @@ import { unstable_getServerSession } from "next-auth/next";
 import { authOptions } from "../auth/[...nextauth]";
 
 import dbConnect from '../../../utils/dbConnect'
-import dev_LocationOfInterest from '../../../models/dev_LocationOfInterest'
+import LocationOfInterest from '../../../models/LocationOfInterest'
 
 const bucketName = process.env.S3_BUCKET_NAME
 const region = process.env.S3_BUCKET_REGION
@@ -98,7 +98,7 @@ apiRoute.post(async (req, res) => {
       }
     }
 
-    const newLocation = await dev_LocationOfInterest.create(newLocationObj)
+    const newLocation = await LocationOfInterest.create(newLocationObj)
     res.status(201).json({ message: 'success' })
   } catch (error) {
     console.log(error)

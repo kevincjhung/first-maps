@@ -74,18 +74,19 @@ export const Search = ({
     let locationsOfInterestArray
 
     // CHOOSE A DATABASE TO FETCH FROM: "staging" or "dev"
-    let databaseToFetchFrom = "dev"
+    // let databaseToFetchFrom = "dev"
+    request = await axios.get("/api/LocationsOfInterest")
+    locationsOfInterestArray = request.data.results
 
     // call API based on chosen database 
-    if (databaseToFetchFrom === "staging") {
-      request = await axios.get("/api/locationsOfInterest")
-      locationsOfInterestArray = request.data.results
-    } else if (databaseToFetchFrom === "dev") {
-      request = await axios.get("/api/devLocationsOfInterest")
-      locationsOfInterestArray = request.data.results
-    } else {
-      console.error('`databaseToFetchFrom` is not a valid database. See Map.jsx')
-    }
+    // if (databaseToFetchFrom === "staging") {
+    //   request = await axios.get("/api/locationsOfInterest")
+    //   locationsOfInterestArray = request.data.results
+    // } else if (databaseToFetchFrom === "dev") {
+
+    // } else {
+    //   console.error('`databaseToFetchFrom` is not a valid database. See Map.jsx')
+    // }
 
     // reverses cordinates to match leaflet's format
     locationsOfInterestArray.map((location) => {

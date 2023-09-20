@@ -1,22 +1,21 @@
 import mongoose from 'mongoose'
 
-
 const LocationsOfInterestSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'please provide name of point of interest'],
         unique: true,
         trim: true,
-        maxlength: [50, 'name cannot be more than 50 characters']
+        maxlength: [100, 'name cannot be more than 100 characters']
     },
     description: {
         type: String,
-        required: true,
+        required: false,
         maxlength: [500, 'description can not be more than 500 characters'],
     },
-    category: {
+    category: { // arts/culture/language/history
         type: String,
-        required: true,
+        required: false,
         maxlength: [50, 'description can not be more than 500 characters'],
     },
     coordinates: {
@@ -35,7 +34,12 @@ const LocationsOfInterestSchema = new mongoose.Schema({
                 type: String
             }
         }]
-    }
+    },
+    images: [{ name: String }],
+    userEmail: {
+        type: String,
+        required: [true, 'please provide user email'],
+    },
 })
 
 // if the LocationsOfInterestSchema db exists, export it. if not, create it and export it

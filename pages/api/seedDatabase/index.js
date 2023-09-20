@@ -10,7 +10,7 @@ export default async function seedDatabase (req, res) {
     switch (method) {
         case 'POST':
             try {
-                // seed()
+                seed()
                 console.log(`un-comment the "seed()" method in /pages/api/seedDatabase to use the seed method`)
                 res.status(201).json({ success: true, results: `un-comment the "seed()" method in /pages/api/seedDatabase to use the seed method` })
             } catch (error) {
